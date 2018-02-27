@@ -1,59 +1,99 @@
-# If this is your first time writing a language grammar, check out:
-#   - https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
+  # If this is your first time writing a language grammar, check out:
+  #   - https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
 
-'scopeName': 'source.beast'
-'name': 'Beast'
-'fileTypes': [
-  'beast'
-  'bst'
-]
-'foldingStartMarker': '('
-'foldingStopMarker': ')'
-'patterns': [
-  {
-    'match': ';;[^\\n]*'
-    'name': 'comment.line.beast'
-  }
-  {
-    'name': "comment.block.semicolon.beast"
-		'begin': "\\(;"
-		'end':   ";\\)"
-		'beginCaptures':
-      0:
-        'name': "punctuation.section.comment.begin.beast"
-    'endCaptures':
-      0:
-        'name': "punctuation.section.comment.end.beast"
-  }
-  {
-    'match': '\\b(while|if|export|import)\\b'
-    'name': 'keyword.control.beast'
-  }
-  {
-    'match': '\\b(from|as)\\b'
-    'name': 'keyword.operator.beast'
-  }
-  {
-    'match': '\\b(module|func|start)\\b'
-    'name': 'storage.type.beast'
-  }
-  {
-    'match': '\\b(gt|lt|eq|gte|lte|add|sub|mul|div|rem|sig)\\b'
-    'name': 'support.function.beast'
-  }
-  {
-    'name': 'variable.other.name.beast'
-		'match': '(\\$)[\\w]+'
-		'captures':
-      1:
-        'name': "punctuation.definition.variable.beast"
-  }
-  {
-    'match': '(%st|%fb|%bp|%vi|%key)'
-    'name': 'variable.language.beast'
-  }
-  {
-    'match': '(:)[\\w]+\\b'
-    'name': 'constant.other.symbol.beast'
-  }
-]
+  'scopeName': 'source.beast'
+  'name': 'Beast'
+  'fileTypes': [
+    'beast'
+    'bst'
+  ]
+  'foldingStartMarker': '('
+  'foldingStopMarker': ')'
+  'patterns': [
+    {
+      'match': ';;[^\\n]*'
+      'name': 'comment.line.beast'
+    }
+    {
+      'name': "comment.block.semicolon.beast"
+  		'begin': "\\(;"
+  		'end':   ";\\)"
+  		'beginCaptures':
+        0:
+          'name': "punctuation.section.comment.begin.beast"
+      'endCaptures':
+        0:
+          'name': "punctuation.section.comment.end.beast"
+    }
+    {
+      'match': '\\b(while|if|else|export|import)\\b'
+      'name': 'keyword.control.beast'
+    }
+    {
+      'match': '\\b(from|as)\\b'
+      'name': 'keyword.operator.beast'
+    }
+    {
+      'match': '\\b(module|func|start)\\b'
+      'name': 'storage.type.beast'
+    }
+    {
+      'match': '\\b(gt|lt|eq|gte|lte|add|sub|mul|div|rem|cast|sig|push|mov|swp|dup|call|ret)\\b'
+      'name': 'support.function.beast'
+    }
+    {
+      'name': 'variable.other.name.beast'
+  		'match': '(\\$)[\\w]+\\b'
+  		'captures':
+        1:
+          'name': "punctuation.definition.variable.beast"
+    }
+    {
+      'match': '(%st|%fb|%bp|%vi|%key)'
+      'name': 'variable.language.beast'
+    }
+    {
+      'match': '(:)[\\w]+\\b'
+      'name': 'constant.other.symbol.beast'
+    }
+    {
+      # NaN constant with payload
+      'name': "constant.language.nan.with-payload.beast"
+      'match': "(?<!\\w)[-+]?nan(:)(0x[A-Fa-f0-9]+)"
+      'captures':
+           1:
+             'name': "punctuation.separator.payload.colon.beast"
+           2:
+             'name': "constant.numeric.int.hex.payload.beast"
+    }
+    {
+      # Constants
+      'name': "constant.language.$1.beast"
+      'match': "(?<!\\w)[-+]?(inf|nan)(?!\\w)"
+    }
+    {
+      # Floating-point: Hexadecimal
+      'name': "constant.numeric.float.hex.beast"
+      'match': """(?x) (?<!\\w)
+        [-+]?
+        0x [A-Fa-f0-9]+
+        (?: \\.[A-Fa-f0-9]* )?
+        (?: [pP][-+]?[0-9]+ )?
+      """
+    }
+    {
+      # Floating-point: Decimal
+      'name': "constant.numeric.float.decimal.beast"
+      'match': "(?<!\\w)[-+]?\\d+(?:\\.\\d*)?(?:[eE][-+]?[0-9]+)?"
+    }
+    {
+      # Integer: Hexadecimal
+      'name': "constant.numeric.int.hex.beast"
+      'match': "(?<!\\w)[-+]?0x[A-Fa-f0-9]+"
+    }
+    {
+      # Integer: Decimal
+      'name': "constant.numeric.int.decimal.beast"
+      'match': "(?<!\\w)[-+]?\\d+"
+    }
+  ]
