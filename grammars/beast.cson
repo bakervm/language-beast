@@ -1,0 +1,59 @@
+# If this is your first time writing a language grammar, check out:
+#   - https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
+
+'scopeName': 'source.beast'
+'name': 'Beast'
+'fileTypes': [
+  'beast'
+  'bst'
+]
+'foldingStartMarker': '('
+'foldingStopMarker': ')'
+'patterns': [
+  {
+    'match': ';;[^\\n]*'
+    'name': 'comment.line.beast'
+  }
+  {
+    'name': "comment.block.semicolon.beast"
+		'begin': "\\(;"
+		'end':   ";\\)"
+		'beginCaptures':
+      0:
+        'name': "punctuation.section.comment.begin.beast"
+    'endCaptures':
+      0:
+        'name': "punctuation.section.comment.end.beast"
+  }
+  {
+    'match': '\\b(while|if|export|import)\\b'
+    'name': 'keyword.control.beast'
+  }
+  {
+    'match': '\\b(from|as)\\b'
+    'name': 'keyword.operator.beast'
+  }
+  {
+    'match': '\\b(module|func|start)\\b'
+    'name': 'storage.type.beast'
+  }
+  {
+    'match': '\\b(gt|lt|eq|gte|lte|add|sub|mul|div|rem|sig)\\b'
+    'name': 'support.function.beast'
+  }
+  {
+    'name': 'variable.other.name.beast'
+		'match': '(\\$)[\\w]+'
+		'captures':
+      1:
+        'name': "punctuation.definition.variable.beast"
+  }
+  {
+    'match': '(%st|%fb|%bp|%vi|%key)'
+    'name': 'variable.language.beast'
+  }
+  {
+    'match': '(:)[\\w]+\\b'
+    'name': 'constant.other.symbol.beast'
+  }
+]

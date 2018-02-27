@@ -1,0 +1,14 @@
+{
+  "name": "language-beast",
+  "version": "0.1.0",
+  "description": "A short description of your language package",
+  "keywords": [
+    "language",
+    "grammar"
+  ],
+  "repository": "https://github.com/sphinxc0re/language-beast",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  }
+}

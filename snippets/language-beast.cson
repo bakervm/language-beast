@@ -1,0 +1,13 @@
+# If you want some example snippets, check out:
+# https://github.com/atom/language-javascript/blob/master/snippets/javascript.cson
+
+'.source.beast':
+  'Module head':
+    'prefix': 'modh'
+    'body': '(module $${1:moduleName})'
+  'Function':
+    'prefix': 'func'
+    'body': '(func $${1:moduleName})'
+  'Full Module':
+    'prefix': 'modf'
+    'body': '(module $${1:moduleName}\n\t(func $main\n\t\t${2})\n\t(start $main))\n'
