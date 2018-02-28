@@ -1,13 +1,13 @@
 {
   "name": "language-beast",
   "version": "0.0.0",
-  "description": "A short description of your language package",
+  "description": "Language package for the Beast programming language",
   "keywords": [
     "language",
     "grammar"
   ],
-  "repository": "https://github.com/sphinxc0re/language-beast",
-  "license": "MIT",
+  "repository": "https://github.com/bakervm/language-beast",
+  "license": "GPL-3.0-only",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   }
