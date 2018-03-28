@@ -60,7 +60,7 @@
       'name': 'storage.type.beast'
     }
     {
-      'match': '\\b(add|sub|mul|div|push|dup|call|ret)\\b'
+      'match': '\\b(add|sub|mul|div|shl|shr|and|or|xor|not|neg|inc|dec|u8_promote|u16_demote|i8_promote|i16_demote|reg|load|store|push|dup|drop|sys|alloc|free|call|ret)\\b'
       'name': 'support.function.beast'
     }
     {
